@@ -6,8 +6,13 @@ var redis = require("redis"),
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  var redisVal = client.get('test_key', function (err, replay) {
-    res.render('index', {title: 'Express', redis_val: replay});
+  console.log("user is auth:", req.isAuthenticated());
+  client.get('test_key', function (err, replay) {
+    var data = {title: 'Express', redis_val: replay};
+    if(req.user){
+      data.username = req.user.username;
+    }
+    res.render('index', data);
   });
 });
 
@@ -16,7 +21,6 @@ router.get('/redis', function (req, res) {
 });
 
 router.post('/redis', function (req, res) {
-  console.log(req.body);
   if (!_.isEmpty(req.body.data)) {
     client.set('test_key', req.body.data, redis.print);
   }
