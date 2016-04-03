@@ -1,0 +1,23 @@
+{
+  "name": "redis_start",
+  "description": "",
+  "main": "",
+  "authors": [
+    "feixiao <fei.xiao@Yungoal.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "index",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.2"
+  }
+}
